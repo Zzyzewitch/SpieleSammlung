@@ -1,6 +1,4 @@
 package spieleSammlung;
 
-public class blspiel {
-
-
+public class bank {
 }

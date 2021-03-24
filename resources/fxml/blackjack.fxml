@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spieleSammlung.BlackjackController">
+   <children>
+      <Button fx:id="split" layoutX="210.0" layoutY="257.0" mnemonicParsing="false" onAction="#splitIt" text="Split" />
+      <Button fx:id="verdopple" layoutX="259.0" layoutY="257.0" mnemonicParsing="false" onAction="#doubleIt" text="Double" />
+      <Button fx:id="hold" layoutX="326.0" layoutY="257.0" mnemonicParsing="false" onAction="#holdIt" text="Hold" />
+      <Button fx:id="git" layoutX="382.0" layoutY="257.0" mnemonicParsing="false" onAction="#hitIt" text="Take" />
+      <Button fx:id="start" layoutX="274.0" layoutY="175.0" mnemonicParsing="false" onAction="#start" text="Start" />
+      <Label fx:id="kartenBank" layoutX="270.0" layoutY="38.0" text="KartenBank">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="kontostand" layoutX="82.0" layoutY="317.0" text="Kontostand">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="kartenSpieler" layoutX="270.0" layoutY="317.0" text="KartenSpieler">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
