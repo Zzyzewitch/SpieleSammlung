@@ -16,7 +16,7 @@ public class start extends Application{
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/blackjack.fxml"));
 
 
-           // primaryStage.setTitle("BlackJack");
+           //primaryStage.setTitle("BlackJack");
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

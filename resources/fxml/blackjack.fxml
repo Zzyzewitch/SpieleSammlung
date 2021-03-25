@@ -27,5 +27,10 @@
             <Font size="21.0" />
          </font>
       </Label>
+      <Label fx:id="gesamtWert" layoutX="508.0" layoutY="332.0" text="wert">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
