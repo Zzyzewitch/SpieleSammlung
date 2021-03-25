@@ -30,6 +30,9 @@ List<String> bankKarten = new ArrayList<>();
         private Button start;
 
         @FXML
+        private Button end;
+
+        @FXML
         private Label kartenBank;
 
         @FXML
@@ -56,7 +59,22 @@ List<String> bankKarten = new ArrayList<>();
                        placeholder += spielerKarten.get(i) + "\n";
                }
                kartenSpieler.setText(placeholder);
-               gesamtWert.setText(String.valueOf(karte.gesamtKartenwert(karte.kartenWertSpieler)));
+
+               if(karte.gesamtKartenwert(karte.kartenWertSpieler)== -2) {
+                   gesamtWert.setText("BlackJack");
+                   git.setDisable(true);
+                   hold.setDisable(true);
+                   verdopple.setDisable(true);
+               }
+               else if (karte.gesamtKartenwert(karte.kartenWertSpieler)== -1) {
+                   gesamtWert.setText("Bank gewinnt");
+                   git.setDisable(true);
+                   hold.setDisable(true);
+                   verdopple.setDisable(true);
+               }
+               else {
+                   gesamtWert.setText(String.valueOf(karte.gesamtKartenwert(karte.kartenWertSpieler)));
+               }
         }
 
         @FXML
@@ -66,6 +84,10 @@ List<String> bankKarten = new ArrayList<>();
 
         @FXML
         void splitIt(ActionEvent event) {
+            if(karte.getGleich()){
+                split.setDisable(false);
+                //aufruf funktion in karte neue liste überführen funktionen bei take ergänzen
+            }
 
         }
 
@@ -81,6 +103,7 @@ List<String> bankKarten = new ArrayList<>();
                kartenBank.setText(bankKarten.get(0) +"\n" + bankKarten.get(1));
                kartenSpieler.setText(spielerKarten.get(0) + "\n" + spielerKarten.get(1));
                gesamtWert.setText(String.valueOf(karte.gesamtKartenwert(karte.kartenWertSpieler)));
+               start.setDisable(true);
 
         }
 
@@ -88,6 +111,13 @@ List<String> bankKarten = new ArrayList<>();
         private void initialize(){
                 System.out.println("In Initialize");
                 gesamtWert.setText("0");
+                split.setDisable(true);
         }
+
+        @FXML
+        void end(ActionEvent event) {
+            System.exit(0);
+        }
+
 
 }

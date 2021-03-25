@@ -10,7 +10,7 @@
       <Button fx:id="split" layoutX="210.0" layoutY="257.0" mnemonicParsing="false" onAction="#splitIt" text="Split" />
       <Button fx:id="verdopple" layoutX="259.0" layoutY="257.0" mnemonicParsing="false" onAction="#doubleIt" text="Double" />
       <Button fx:id="hold" layoutX="326.0" layoutY="257.0" mnemonicParsing="false" onAction="#holdIt" text="Hold" />
-      <Button fx:id="git" layoutX="382.0" layoutY="257.0" mnemonicParsing="false" onAction="#hitIt" text="Take" />
+      <Button fx:id="git" layoutX="382.0" layoutY="257.0" mnemonicParsing="false" onAction="#hitIt" text="Hit" />
       <Button fx:id="start" layoutX="274.0" layoutY="175.0" mnemonicParsing="false" onAction="#start" text="Start" />
       <Label fx:id="kartenBank" layoutX="270.0" layoutY="38.0" text="KartenBank">
          <font>
@@ -32,5 +32,6 @@
             <Font size="22.0" />
          </font>
       </Label>
+      <Button fx:id="end" layoutX="525.0" layoutY="14.0" mnemonicParsing="false" onAction="#end" text="Ende" />
    </children>
 </AnchorPane>

@@ -10,8 +10,13 @@ public class Karte{
     SecureRandom secureRand = new SecureRandom();
     List<Integer> kartenWertSpieler = new ArrayList<>();
     List<Integer> kartenWertBank = new ArrayList<>();
+    private boolean gleich;
     private int gesamt;
+    private static int zaehler;
+
+
     public String ziehenSpieler(){
+        zaehler++;
         int farbZahl = secureRand.nextInt(4);
         int wertZahl = secureRand.nextInt(11);
 
@@ -54,12 +59,16 @@ public class Karte{
         else{
             kartenWertSpieler.add(11);
         }
+        if (zaehler==2 && kartenWertSpieler.get(0) == kartenWertSpieler.get(1)){
+            gleich = true;
 
+        }
 
         return farbe.get(farbZahl) +" " + wert.get(wertZahl);
     }
 
     public String ziehenBank() {
+
         int farbZahl = secureRand.nextInt(4);
         int wertZahl = secureRand.nextInt(11);
 
@@ -127,5 +136,23 @@ public class Karte{
 
         }
         return gesamt;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //set und get
+    public boolean getGleich(){
+        return gleich;
     }
 }
