@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class start extends Application{
+public class Start extends Application{
 
         @Override
         public void start(Stage primaryStage) throws Exception {

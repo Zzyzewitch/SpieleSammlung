@@ -79,6 +79,9 @@ List<String> bankKarten = new ArrayList<>();
 
         @FXML
         void holdIt(ActionEvent event) {
+            //funktions aufruf bank spiele
+            git.setDisable(true);
+            verdopple.setDisable(true);
 
         }
 
@@ -120,4 +123,90 @@ List<String> bankKarten = new ArrayList<>();
         }
 
 
+
+        @FXML
+        public Label getkartenBank(){
+            return  kartenBank;
+        }
+
+        public Label getGesamtWert(){
+            return  gesamtWert;
+        }
+
+        public Label getKontostand(){
+            return  kontostand;
+        }
+        public Label getKartenBank(){
+            return kartenBank;
+        }
+        public Label getKartenSpieler(){
+            return kartenSpieler;
+        }
+
+        public Button getSplit(){
+            return split;
+        }
+
+        public Button getGit(){
+            return git;
+        }
+
+        public Button getStart() {
+            return start;
+        }
+
+        public Button getEnd() {
+            return end;
+        }
+
+        public Button getHold() {
+            return hold;
+        }
+
+        public Button getVerdopple() {
+            return verdopple;
+        }
+
+
+
+    @FXML
+        public void setKartenBank(String kartenBank){
+           this.kartenBank.setText(kartenBank);
+        }
+
+        public void setGesamtWert(String gw){
+            gesamtWert.setText(gw);
+        }
+
+        public void setKontostand(String kontostand){
+            this.kontostand.setText(kontostand);
+        }
+
+        public void setKartenSpieler(String kartenSpieler){
+            this.kartenSpieler.setText(kartenSpieler);
+        }
+
+        public void setEnd(Button end) {
+            this.end = end;
+        }
+
+        public void setGit(Button git) {
+            this.git = git;
+        }
+
+        public void setHold(Button hold) {
+            this.hold = hold;
+        }
+
+        public void setSplit(Button split) {
+            this.split = split;
+        }
+
+        public void setStart(Button start) {
+            this.start = start;
+        }
+
+        public void setVerdopple(Button verdopple) {
+            this.verdopple = verdopple;
+        }
 }

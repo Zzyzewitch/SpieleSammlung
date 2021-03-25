@@ -1,4 +1,4 @@
 package spieleSammlung;
 
-public class spieler {
+public class Spieler {
 }
