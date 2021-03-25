@@ -72,7 +72,7 @@ public class Karte{
     public String ziehenBank() {
 
         int farbZahl = secureRand.nextInt(4);
-        int wertZahl = secureRand.nextInt(11);
+        int wertZahl = secureRand.nextInt(13);
 
         if(wertZahl == 8 || wertZahl == 9 || wertZahl == 10 || wertZahl == 11){
             kartenWertBank.add(10);
@@ -138,6 +138,7 @@ public class Karte{
 
     public boolean pruefeBlackJackBank(){
         if ((kartenWertBank.get(0) == 10 || kartenWertBank.get(1) == 10) && (kartenWertBank.get(0) == 11 || kartenWertBank.get(1) == 11)){
+            System.out.println("bj bei bank");
             return true;
         }
         return false;
@@ -145,6 +146,7 @@ public class Karte{
 
     public boolean pruefeBlackJackSpieler(){
         if ((kartenWertSpieler.get(0) == 10 || kartenWertSpieler.get(1) == 10) && (kartenWertSpieler.get(0) == 11 || kartenWertSpieler.get(1) == 11)){
+            System.out.println("bj bei spieler");
             return true;
         }
         return false;
