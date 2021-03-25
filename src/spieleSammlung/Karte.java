@@ -20,7 +20,7 @@ public class Karte{
     public String ziehenSpieler(){
         zaehler++;
         int farbZahl = secureRand.nextInt(4);
-        int wertZahl = secureRand.nextInt(14);
+        int wertZahl = secureRand.nextInt(13);
 
         if(wertZahl == 8 || wertZahl == 9 || wertZahl == 10 || wertZahl == 11){
             kartenWertSpieler.add(10);
