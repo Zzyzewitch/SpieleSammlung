@@ -11,8 +11,9 @@ import java.util.List;
 
 public class BlackjackController {
 Karte karte = new Karte();
-List<String> spielerKarten = new ArrayList<>();
-List<String> bankKarten = new ArrayList<>();
+Bank bank = new Bank();
+
+
 
         @FXML
         private Button split;
@@ -41,6 +42,8 @@ List<String> bankKarten = new ArrayList<>();
         @FXML
         private Label kartenSpieler;
 
+        @FXML
+        private Label gesamtWertBank;
 
         @FXML
         private Label gesamtWert;
@@ -53,24 +56,21 @@ List<String> bankKarten = new ArrayList<>();
 
         @FXML
         void hitIt(ActionEvent event) {
-               spielerKarten.add(karte.ziehenSpieler());
-               String placeholder= spielerKarten.get(0) + "\n" + spielerKarten.get(1) + "\n";
-               for(int i = 2; i < spielerKarten.size(); i++){
-                       placeholder += spielerKarten.get(i) + "\n";
+               karte.spielerKarten.add(karte.ziehenSpieler());
+               String placeholder= karte.spielerKarten.get(0) + "\n" + karte.spielerKarten.get(1) + "\n";
+               for(int i = 2; i < karte.spielerKarten.size(); i++){
+                       placeholder += karte.spielerKarten.get(i) + "\n";
                }
                kartenSpieler.setText(placeholder);
 
-               if(karte.gesamtKartenwert(karte.kartenWertSpieler)== -2) {
-                   gesamtWert.setText("BlackJack");
-                   git.setDisable(true);
-                   hold.setDisable(true);
-                   verdopple.setDisable(true);
-               }
-               else if (karte.gesamtKartenwert(karte.kartenWertSpieler)== -1) {
+
+               if (karte.gesamtKartenwert(karte.kartenWertSpieler)== -1) {
                    gesamtWert.setText("Bank gewinnt");
                    git.setDisable(true);
                    hold.setDisable(true);
                    verdopple.setDisable(true);
+                   start.setDisable(false);
+
                }
                else {
                    gesamtWert.setText(String.valueOf(karte.gesamtKartenwert(karte.kartenWertSpieler)));
@@ -82,6 +82,7 @@ List<String> bankKarten = new ArrayList<>();
             //funktions aufruf bank spiele
             git.setDisable(true);
             verdopple.setDisable(true);
+            bank.spiel(karte,BlackjackController.this);
 
         }
 
@@ -96,17 +97,29 @@ List<String> bankKarten = new ArrayList<>();
 
         @FXML
         void start(ActionEvent event) {
-
-               spielerKarten.add(karte.ziehenSpieler());
-               spielerKarten.add(karte.ziehenSpieler());
-
-               bankKarten.add(karte.ziehenBank());
-               bankKarten.add(karte.ziehenBank());
-
-               kartenBank.setText(bankKarten.get(0) +"\n" + bankKarten.get(1));
-               kartenSpieler.setText(spielerKarten.get(0) + "\n" + spielerKarten.get(1));
-               gesamtWert.setText(String.valueOf(karte.gesamtKartenwert(karte.kartenWertSpieler)));
-               start.setDisable(true);
+            reset();
+            karte.spielerKarten.add(karte.ziehenSpieler());
+            karte.spielerKarten.add(karte.ziehenSpieler());
+            if(karte.pruefeBlackJackSpieler()){
+                gesamtWert.setText("Spieler gewinnt");
+                git.setDisable(true);
+                hold.setDisable(true);
+                verdopple.setDisable(true);
+                start.setDisable(false);
+            }
+            karte.bankKarten.add(karte.ziehenBank());
+            karte.bankKarten.add(karte.ziehenBank());
+            if(karte.pruefeBlackJackBank()){
+                gesamtWert.setText("Bank gewinnt");
+                git.setDisable(true);
+                hold.setDisable(true);
+                verdopple.setDisable(true);
+                start.setDisable(false);
+            }
+            kartenBank.setText(karte.bankKarten.get(0) +"\n" + karte.bankKarten.get(1));
+            kartenSpieler.setText(karte.spielerKarten.get(0) + "\n" + karte.spielerKarten.get(1));
+            gesamtWert.setText(String.valueOf(karte.gesamtKartenwert(karte.kartenWertSpieler)));
+            start.setDisable(true);
 
         }
 
@@ -115,12 +128,30 @@ List<String> bankKarten = new ArrayList<>();
                 System.out.println("In Initialize");
                 gesamtWert.setText("0");
                 split.setDisable(true);
+                gesamtWertBank.setText("0");
         }
 
         @FXML
         void end(ActionEvent event) {
             System.exit(0);
         }
+
+        public void reset(){
+            karte.kartenWertSpieler.clear();
+            karte.kartenWertBank.clear();
+            karte.spielerKarten.clear();
+            karte.bankKarten.clear();
+            kartenSpieler.setText("KartenSpieler");
+            kartenBank.setText("KartenBank");
+            gesamtWertBank.setText("0");
+            gesamtWert.setText("0");
+            verdopple.setDisable(false);
+            git.setDisable(false);
+            hold.setDisable(false);
+        }
+
+
+
 
 
 
@@ -143,7 +174,11 @@ List<String> bankKarten = new ArrayList<>();
             return kartenSpieler;
         }
 
-        public Button getSplit(){
+         public Label getGesamtWertBank() {
+            return gesamtWertBank;
+         }
+
+    public Button getSplit(){
             return split;
         }
 
@@ -169,7 +204,7 @@ List<String> bankKarten = new ArrayList<>();
 
 
 
-    @FXML
+        @FXML
         public void setKartenBank(String kartenBank){
            this.kartenBank.setText(kartenBank);
         }
@@ -192,6 +227,10 @@ List<String> bankKarten = new ArrayList<>();
 
         public void setGit(Button git) {
             this.git = git;
+        }
+
+        public void setGesamtWertBank(Label gesamtWertBank) {
+            this.gesamtWertBank = gesamtWertBank;
         }
 
         public void setHold(Button hold) {

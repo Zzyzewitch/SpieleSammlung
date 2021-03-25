@@ -33,5 +33,10 @@
          </font>
       </Label>
       <Button fx:id="end" layoutX="525.0" layoutY="14.0" mnemonicParsing="false" onAction="#end" text="Ende" />
+      <Label fx:id="gesamtWertBank" layoutX="122.0" layoutY="45.0" text="Wert">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

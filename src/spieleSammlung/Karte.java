@@ -10,6 +10,8 @@ public class Karte{
     SecureRandom secureRand = new SecureRandom();
     List<Integer> kartenWertSpieler = new ArrayList<>();
     List<Integer> kartenWertBank = new ArrayList<>();
+    List<String> spielerKarten = new ArrayList<>();
+    List<String> bankKarten = new ArrayList<>();
     private boolean gleich;
     private int gesamt;
     private static int zaehler;
@@ -129,16 +131,24 @@ public class Karte{
                     return -1;
                 }
             }
-            else if(gesamt == 21){
-                //Mokup BlackJack
-                return -2;
-            }
 
         }
         return gesamt;
     }
 
+    public boolean pruefeBlackJackBank(){
+        if ((kartenWertBank.get(0) == 10 || kartenWertBank.get(1) == 10) && (kartenWertBank.get(0) == 11 || kartenWertBank.get(1) == 11)){
+            return true;
+        }
+        return false;
+    }
 
+    public boolean pruefeBlackJackSpieler(){
+        if ((kartenWertSpieler.get(0) == 10 || kartenWertSpieler.get(1) == 10) && (kartenWertSpieler.get(0) == 11 || kartenWertSpieler.get(1) == 11)){
+            return true;
+        }
+        return false;
+    }
 
 
 

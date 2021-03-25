@@ -15,7 +15,7 @@ public class Start extends Application{
         public void start(Stage primaryStage) throws Exception {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/blackjack.fxml"));
 
-
+            BlackjackController blackJackController = new BlackjackController();
            //primaryStage.setTitle("BlackJack");
 
             Scene scene = new Scene(root);
