@@ -119,42 +119,46 @@ public class Karte{
     }
     public int gesamtKartenwert(List<Integer> li){
         gesamt = 0;
+        boolean bg = true;
         for (int i = 0; i < li.size(); i++) {
             gesamt += li.get(i);
             System.out.println("gesamt:::" + gesamt);
             if (gesamt > 21) {
-                if (li.get(i) == 11) {
-                    gesamt -= 10;
+                for (int j = 0; j < li.size(); j++) {
+                    if (li.get(j) == 11) {
+                        gesamt -= 10;
+                        bg = false;
+                    }
                 }
-                else{
-                    //Mokup Bank gewinnt
+                if(bg){
                     return -1;
                 }
+
             }
 
         }
         return gesamt;
     }
 
-    public boolean pruefeBlackJackBank(){
+    public int pruefeBlackJackBank(){
         if ((kartenWertBank.get(0) == 10 || kartenWertBank.get(1) == 10) && (kartenWertBank.get(0) == 11 || kartenWertBank.get(1) == 11)){
             System.out.println("bj bei bank");
-            return true;
+            return 1;
         }
-        return false;
+        else {
+            return 0;
+        }
     }
 
-    public boolean pruefeBlackJackSpieler(){
-        if ((kartenWertSpieler.get(0) == 10 || kartenWertSpieler.get(1) == 10) && (kartenWertSpieler.get(0) == 11 || kartenWertSpieler.get(1) == 11)){
+    public int pruefeBlackJackSpieler() {
+        if ((kartenWertSpieler.get(0) == 10 || kartenWertSpieler.get(1) == 10) && (kartenWertSpieler.get(0) == 11 || kartenWertSpieler.get(1) == 11)) {
             System.out.println("bj bei spieler");
-            return true;
+            return 1;
         }
-        return false;
+        else {
+            return 0;
+        }
     }
-
-
-
-
 
 
 

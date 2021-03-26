@@ -1,7 +1,12 @@
 package spieleSammlung;
 
 public class Bank {
-Spieltisch sptisch = new Spieltisch();
+    public Bank(Spieltisch sptisch) {
+        this.sptisch = sptisch;
+    }
+
+    //Spieltisch sptisch = new Spieltisch();
+    private Spieltisch sptisch;
     public void spiel(Karte ka, BlackjackController bc){
         while(ka.gesamtKartenwert(ka.kartenWertBank) < 17 && ka.gesamtKartenwert(ka.kartenWertBank) != -1 && ka.gesamtKartenwert(ka.kartenWertBank) != -2){
             hitIt(ka, bc);
